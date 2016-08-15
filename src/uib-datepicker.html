@@ -1,4 +1,4 @@
-<div class="form-group {{form.htmlClass}}" ng-class="{'has-error': hasError(), 'has-success' : hasSuccess()}">
+<div class="form-group {{form.htmlClass}}" ng-class="{'has-error': hasError(), 'has-success': hasSuccess() }">
   <label class="control-label {{form.labelHtmlClass}}" ng-show="showTitle()">
     {{form.title}}
     <abbr ng-if="form.isRequired">*</abbr>
@@ -9,20 +9,17 @@
           ng-bind-html="form.fieldAddonLeft"></span>
     <input ng-show="form.key"
            type="text"
-           class="form-control pickadate-control {{form.fieldHtmlClass}}"
+           class="form-control {{form.fieldHtmlClass}}"
            schema-validate="form"
            ng-model="$$value$$"
            ng-disabled="form.readonly"
-           pick-a-date="form.pickadate"
-           min-date="form.minDate"
-           max-date="form.maxDate"
-           select-years="form.selectYears"
-           select-months="form.selectMonths"
            name="{{form.key.slice(-1)[0]}}"
-           format="form.format" />
+           placeholder="{{form.format}}"
+           uib-datepicker-popup="{{form.format}}"
+           is-open="_openedPbsUibDatePicker"
+           ng-focus="_openedPbsUibDatePicker=true" />
     <span ng-if="form.fieldAddonRight"
           class="input-group-addon"
           ng-bind-html="form.fieldAddonRight"></span>
   </div>
-  <span class="help-block">{{ (hasError() && errorMessage(schemaError())) || form.description}}</span>
 </div>
