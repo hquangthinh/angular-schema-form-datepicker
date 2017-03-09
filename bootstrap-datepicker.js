@@ -1,4 +1,5 @@
 angular.module("schemaForm").run(["$templateCache", function($templateCache) {$templateCache.put("directives/decorators/bootstrap/datepicker/datepicker.html","<div class=\"form-group {{form.htmlClass}}\" ng-class=\"{\'has-error\': hasError(), \'has-success\' : hasSuccess()}\">\r\n  <label class=\"control-label {{form.labelHtmlClass}}\" ng-show=\"showTitle()\">\r\n    {{form.title}}\r\n    <abbr ng-if=\"form.isRequired\">*</abbr>\r\n  </label>\r\n  <div ng-class=\"{\'input-group\': (form.fieldAddonLeft || form.fieldAddonRight)}\">\r\n    <span ng-if=\"form.fieldAddonLeft\"\r\n          class=\"input-group-addon\"\r\n          ng-bind-html=\"form.fieldAddonLeft\"></span>\r\n    <input ng-show=\"form.key\"\r\n           type=\"text\"\r\n           class=\"form-control pickadate-control {{form.fieldHtmlClass}}\"\r\n           schema-validate=\"form\"\r\n           ng-model=\"$$value$$\"\r\n           ng-disabled=\"form.readonly\"\r\n           pick-a-date=\"form.pickadate\"\r\n           min-date=\"form.minDate\"\r\n           max-date=\"form.maxDate\"\r\n           select-years=\"form.selectYears\"\r\n           select-months=\"form.selectMonths\"\r\n           name=\"{{form.key.slice(-1)[0]}}\"\r\n           format=\"form.format\" />\r\n    <span ng-if=\"form.fieldAddonRight\"\r\n          class=\"input-group-addon\"\r\n          ng-bind-html=\"form.fieldAddonRight\"></span>\r\n  </div>\r\n  <span class=\"help-block\">{{ (hasError() && errorMessage(schemaError())) || form.description}}</span>\r\n</div>\r\n");
+$templateCache.put("directives/decorators/bootstrap/datepicker/pbs-datepicker.html","<div class=\"form-group {{form.htmlClass}}\" ng-class=\"{\'has-error\': hasError(), \'has-success\': hasSuccess() }\">\r\n  <label class=\"control-label {{form.labelHtmlClass}}\" ng-show=\"showTitle()\">\r\n    {{form.title}}\r\n    <abbr ng-if=\"form.isRequired\">*</abbr>\r\n  </label>\r\n  <pbs-date-picker \r\n        ng-show=\"form.key\"\r\n        pbs-disabled=\"form.readonly\"            \r\n        pbs-model=\"$$value$$\">\r\n  </pbs-date-picker>  \r\n</div>");
 $templateCache.put("directives/decorators/bootstrap/datepicker/uib-datepicker.html","<div class=\"form-group {{form.htmlClass}}\" ng-class=\"{\'has-error\': hasError(), \'has-success\': hasSuccess() }\">\r\n  <label class=\"control-label {{form.labelHtmlClass}}\" ng-show=\"showTitle()\">\r\n    {{form.title}}\r\n    <abbr ng-if=\"form.isRequired\">*</abbr>\r\n  </label>\r\n  <div ng-class=\"{\'input-group\': (form.fieldAddonLeft || form.fieldAddonRight)}\">\r\n    <span ng-if=\"form.fieldAddonLeft\"\r\n          class=\"input-group-addon\"\r\n          ng-bind-html=\"form.fieldAddonLeft\"></span>\r\n    <input ng-show=\"form.key\"\r\n           type=\"text\"\r\n           class=\"form-control {{form.fieldHtmlClass}}\"\r\n           schema-validate=\"form\"\r\n           ng-model=\"$$value$$\"\r\n           ng-disabled=\"form.readonly\"\r\n           name=\"{{form.key.slice(-1)[0]}}\"\r\n           placeholder=\"{{form.format}}\"\r\n           uib-datepicker-popup=\"{{form.format}}\"\r\n           is-open=\"_openedPbsUibDatePicker\"\r\n           ng-focus=\"_openedPbsUibDatePicker=true\" />\r\n    <span ng-if=\"form.fieldAddonRight\"\r\n          class=\"input-group-addon\"\r\n          ng-bind-html=\"form.fieldAddonRight\"></span>\r\n  </div>\r\n</div>\r\n");}]);
 angular.module('schemaForm').directive('pickADate', function() {
 
@@ -117,11 +118,11 @@ angular.module('schemaForm').config(
     schemaFormDecoratorsProvider.addMapping(
       'bootstrapDecorator',
       'datepicker',
-      'directives/decorators/bootstrap/datepicker/datepicker.html'
+      'directives/decorators/bootstrap/datepicker/pbs-datepicker.html'
     );
     schemaFormDecoratorsProvider.createDirective(
       'datepicker',
-      'directives/decorators/bootstrap/datepicker/datepicker.html'
+      'directives/decorators/bootstrap/datepicker/pbs-datepicker.html'
     );
   }
 ]);

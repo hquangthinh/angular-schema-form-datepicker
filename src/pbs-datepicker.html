@@ -1,0 +1,11 @@
+<div class="form-group {{form.htmlClass}}" ng-class="{'has-error': hasError(), 'has-success': hasSuccess() }">
+  <label class="control-label {{form.labelHtmlClass}}" ng-show="showTitle()">
+    {{form.title}}
+    <abbr ng-if="form.isRequired">*</abbr>
+  </label>
+  <pbs-date-picker 
+        ng-show="form.key"
+        pbs-disabled="form.readonly"            
+        pbs-model="$$value$$">
+  </pbs-date-picker>  
+</div>

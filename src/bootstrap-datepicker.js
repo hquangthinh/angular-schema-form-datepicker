@@ -18,11 +18,11 @@ angular.module('schemaForm').config(
     schemaFormDecoratorsProvider.addMapping(
       'bootstrapDecorator',
       'datepicker',
-      'directives/decorators/bootstrap/datepicker/datepicker.html'
+      'directives/decorators/bootstrap/datepicker/pbs-datepicker.html'
     );
     schemaFormDecoratorsProvider.createDirective(
       'datepicker',
-      'directives/decorators/bootstrap/datepicker/datepicker.html'
+      'directives/decorators/bootstrap/datepicker/pbs-datepicker.html'
     );
   }
 ]);
